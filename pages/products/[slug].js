@@ -1,6 +1,6 @@
 
 import AddCartButton from '@/components/AddCartButton';
-import { Redis } from 'ioredis';
+// import { Redis } from 'ioredis';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react'
@@ -19,55 +19,55 @@ export const getStaticPaths = async () => {
     fallback: 'blocking',
   }
 }
-// export const getStaticProps = async (context) => {
-//   // console.log('context', context)
-//   const id = context?.params?.slug;
-//   // console.log(id)
-//   const res = await fetch(`http://localhost:3001/product/${id}`);
-//   const data = await res.json();
-//   return {
-//     props: {
-//       data
-//     },
-//     revalidate: 10
-//   }
-// }
-
-const redis = new Redis();
-
 export const getStaticProps = async (context) => {
+  // console.log('context', context)
   const id = context?.params?.slug;
-  // const redisKey = `product:${id}`;
-
-  // Check if data is in Redis
-  const cachedData = await redis.get(`productData?id=${id}`);
-
-  if (cachedData) {
-    console.log("id-redis")
-    // If data is found in Redis, return it
-    return {
-      props: {
-        data: JSON.parse(cachedData),
-      },
-      revalidate: 10, // You can keep revalidation as you had it
-    };
-  } else {
-    console.log("id-database")
-    // If data is not in Redis, fetch it from your API
-    const res = await fetch(`http://localhost:3001/product/${id}`);
-    const data = await res.json();
-
-    // Save the fetched data in Redis with a TTL (time-to-live)
-    await redis.setex(`productData?id=${id}`, 3600, JSON.stringify(data)); // Expires in 1 hour (adjust TTL as needed)
-
-    return {
-      props: {
-        data,
-      },
-      revalidate: 10,
-    };
+  // console.log(id)
+  const res = await fetch(`http://localhost:3001/product/${id}`);
+  const data = await res.json();
+  return {
+    props: {
+      data
+    },
+    revalidate: 10
   }
-};
+}
+
+// const redis = new Redis();
+
+// export const getStaticProps = async (context) => {
+//   const id = context?.params?.slug;
+//   // const redisKey = `product:${id}`;
+
+//   // Check if data is in Redis
+//   const cachedData = await redis.get(`productData?id=${id}`);
+
+//   if (cachedData) {
+//     console.log("id-redis")
+//     // If data is found in Redis, return it
+//     return {
+//       props: {
+//         data: JSON.parse(cachedData),
+//       },
+//       revalidate: 10, // You can keep revalidation as you had it
+//     };
+//   } else {
+//     console.log("id-database")
+//     // If data is not in Redis, fetch it from your API
+//     const res = await fetch(`http://localhost:3001/product/${id}`);
+//     const data = await res.json();
+
+//     // Save the fetched data in Redis with a TTL (time-to-live)
+//     await redis.setex(`productData?id=${id}`, 3600, JSON.stringify(data)); // Expires in 1 hour (adjust TTL as needed)
+
+//     return {
+//       props: {
+//         data,
+//       },
+//       revalidate: 10,
+//     };
+//   }
+// };
 
 function Slug({ data }) {
   const router = useRouter()
