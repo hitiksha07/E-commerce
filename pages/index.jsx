@@ -2,14 +2,12 @@ import Head from 'next/head'
 import HomeProducts from '@/components/HomeProducts'
 import { Carousel } from 'react-bootstrap'
 
-
-
 export default function Home() {
   let allProducts = [
     {
       title: 'T-Shirt',
       img: ['https://m.media-amazon.com/images/I/61Vmw6ZbCBL._UX679_.jpg', "https://m.media-amazon.com/images/I/61zdaycq0sL._UX679_.jpg", "https://m.media-amazon.com/images/I/71ivjRqbCwL._AC_UL320_.jpg", "https://m.media-amazon.com/images/I/81mMnJRxZvL._UY741_.jpg"],
-      link: '/tshirt',
+      link: 'tshirt',
       des: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, soluta!'
     },
     {

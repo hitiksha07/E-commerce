@@ -16,13 +16,9 @@ function Signup() {
   }
 
   const [obj, setobj] = useState({ ...blankObj });
-  // console.log('user',user)
   const [count, setcount] = useState(0);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   dispatch(getuserApi())
-  // }, []);
   let match = user?.find(x => x.email == obj.email);
   const Savedata = (e) => {
     e.preventDefault();
@@ -34,9 +30,7 @@ function Signup() {
         let c = uuidv4();
         setcount(c)
         obj.id = c;
-        // console.log(e.target.value)
         if (obj.fname != '' && obj.lname != '' && obj.email != '' && obj.password != '' && obj.phone != '') {
-          // console.log('pass')
           dispatch(adduserApi(obj));
           Swal.fire({
             position: 'center',
@@ -50,7 +44,6 @@ function Signup() {
           }, 1400);
         }
         else {
-          // console.log('error')
           console.log(obj);
           Swal.fire('plz fill all fild')
         }
@@ -62,7 +55,6 @@ function Signup() {
   const getvalue = (e) => {
     obj[e.target.name] = e.target.value
     setobj({ ...obj });
-    // console.log('firstobj',obj)
   }
 
   return (

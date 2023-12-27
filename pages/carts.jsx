@@ -1,21 +1,34 @@
-
-import { deleteCartsData, getCartsApi, updateCartsqty } from '@/redux/action/cartsAction';
-import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { BsDashCircleFill, BsFillPlusCircleFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { IoBagHandle } from 'react-icons/io5';
-import { getuserApi, updateUserData } from '@/redux/action/userAction';
-
-function carts() {
-  const carts = useSelector(state => state.user?.carts);
+import { updateUserData } from '@/redux/action/userAction';
+// export const getServerSideProps = async (req, res) => {
+//   const respons = await fetch('http://localhost:3001/user');
+//   const data = await respons.json();
+  
+//   return {
+//     props: {
+//       data: [...data]
+//     }
+//   }
+// }
+// export const getServerSideProps = async (req, res) => {
+//   const respons = await fetch('http://localhost:3001/user');
+//   const data = await respons.json();
+//   return {
+//     props: {
+//       data: [...data]
+//     }
+//   }
+// }
+function carts({ data }) {
+  // console.log('data',data)
+  // const [user, setuser] = useState(data)
   const user = useSelector(state => state.user?.user);
+  // let user = data
   let dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(getCartsApi())
-  //   dispatch(getuserApi())
-  // }, [])
+
 
   let value;
   if (typeof window !== "undefined") {
@@ -24,38 +37,26 @@ function carts() {
   let usercarts = JSON.parse(JSON.stringify(user))
   let match = usercarts?.find(x => x.email == value?.email);
   let dd = { ...match }
-
-
+  console.log('first', match)
   const removeCart = (id) => {
-    let cartsOf = carts.find(x => x.id == id)
+    let cartsOf = dd.carts?.find(x => x.id == id)
     let carrt = dd?.carts?.filter(x => x.id != cartsOf.id);
     dd.carts = carrt
     dispatch(updateUserData(dd))
-    dispatch(deleteCartsData(id))
   }
   const incrementQty = (x) => {
     let data = { ...x }
     data.qty = 1 + data.qty;
-    dispatch(updateCartsqty(data))
 
     let index = dd?.carts?.findIndex(x => x.id == data.id);
     dd?.carts?.splice(index, 1, data);
     dispatch(updateUserData(dd))
 
-    // let carrt = dd?.carts?.find(x => x.id == data.id);
-    // let aa = JSON.parse(JSON.stringify(carrt))
-    // aa.qty = data.qty;
-    // let index = dd?.carts?.findIndex(x => x.id == carrt.id);
-    // dd?.carts?.splice(index, 1, aa)
-
-    // dispatch(updateCartsqty(data))
-    // dispatch(updateUserData(dd))
   }
   const decremenyQty = (x) => {
     let data = { ...x }
     if (data.qty != 0) {
       data.qty = data.qty - 1;
-      dispatch(updateCartsqty(data));
       let index = dd?.carts?.findIndex(x => x.id == data.id);
       dd?.carts?.splice(index, 1, data)
       dispatch(updateUserData(dd))
@@ -63,7 +64,6 @@ function carts() {
     if (data.qty <= 0) {
       let index = dd?.carts?.findIndex(x => x.id == data.id);
       dd?.carts?.splice(index, 1)
-      dispatch(deleteCartsData(data.id));
       dispatch(updateUserData(dd))
     }
   }

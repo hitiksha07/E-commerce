@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+
 function Checkout() {
   const user = useSelector(state => state.user.user);
-  const carts = useSelector(state => state.user.carts);
 
   let value;
   if (typeof window !== "undefined") {
@@ -17,15 +17,10 @@ function Checkout() {
 
 
   let dispatch = useDispatch()
-  // console.log(carts)
-  // useEffect(() => {
-  //   dispatch(getCartsApi())
-  //   dispatch(getuserApi())
-  // }, []);
 
 
   let total = [];
-  dd.carts.map((x, i) => {
+  dd.carts?.map((x, i) => {
     let price = x.qty * x.price
     total.push(price)
     return total

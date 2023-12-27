@@ -1,24 +1,30 @@
 import AddCartButton from '@/components/AddCartButton'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+export const getServerSideProps = async (req, res) => {
+  const respons = await fetch('http://localhost:3001/product');
+  const data = await respons.json();
+  return {
+    props: {
+      data: [...data]
+    }
+  }
+}
+function bags({data}) {
+  // let dispatch = useDispatch()
+  // let allProduct = useSelector(state => state.user.product)
+  let bags = data?.filter(x => x.types == "bags")
 
-function bags() {
-  let dispatch = useDispatch()
-  let allProduct = useSelector(state => state.user.product)
-  let bags = allProduct?.filter(x => x.types =="bags")
-  // useEffect(() => {
-  //   dispatch(getproductApi())
-  // }, [])
   return (
     <>
       <div className="container mt-5 py-5">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 h-100  g-3 p-3 bg-opacity-10 bg-black">
-        {
+          {
             bags?.map((x, i) => {
-              return <Link href={`/products/${x.id}`} className='text-body text-decoration-none ' key={i}>
-                <div className="col h-100"  >
-                  <div className="card h-100 overflow-hidden">
+              return <div className="col h-100" key={i} >
+                <div className="card h-100 overflow-hidden">
+                  <Link href={`/products/${x.id}`} className='text-body text-decoration-none ' >
                     <div className='p-3 product-img'>
                       <img src={x.img} className="card-img-top border shadow-sm" alt="..." />
                     </div>
@@ -26,15 +32,15 @@ function bags() {
                       <h5 className="card-title">{x.title.slice(0, 20)}</h5>
                       <p className="card-text">{x.des}</p>
                     </div>
-                    <div className="card-footer row ">
-                      <h4 className='col'>{x.price}/-</h4>
-                      <div className="col-auto">
-                        <AddCartButton data={x} />
-                      </div>
+                  </Link>
+                  <div className="card-footer row ">
+                    <h4 className='col'>{x.price}/-</h4>
+                    <div className="col-auto">
+                      <AddCartButton data={x} />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             })
           }
         </div>

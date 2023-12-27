@@ -1,7 +1,6 @@
 import Footer from '@/components/Footer';
 import NavbarCom from '@/components/NavbarCom';
 import { store, wrapper } from '@/redux/Store/store';
-import { getCartsApi } from '@/redux/action/cartsAction';
 import { getLoginApi } from '@/redux/action/loginAction';
 import { getproductApi } from '@/redux/action/productAction';
 import { getuserApi } from '@/redux/action/userAction';
@@ -13,7 +12,6 @@ import { Provider, useDispatch } from 'react-redux';
 function App({ Component, pageProps }) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCartsApi())
     dispatch(getuserApi())
     dispatch(getLoginApi())
     dispatch(getproductApi())

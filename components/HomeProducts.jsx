@@ -13,7 +13,7 @@ function HomeProducts(props) {
                             {
                                 props.img.map((x, i) => {
                                     return <div className="col text-center overflow-hidden" key={i}>
-                                        <img width={100} height={200} src={x} className=" card-img-top " alt="..." />
+                                        <img width={100} height={200} src={x} className=" card-img-top scal" alt="..." />
                                     </div>
                                 })
                             }

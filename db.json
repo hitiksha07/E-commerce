@@ -649,53 +649,15 @@
       "qty": 1
     }
   ],
-  "carts": [
-    {
-      "id": 16,
-      "title": "Coffee Tea Milk Mug",
-      "des": "This is a wider card with supporting text below as a natural lead-in to additional content. ",
-      "price": 399,
-      "img": "https://m.media-amazon.com/images/I/51HfQ4-xkhL._AC_UL320_.jpg",
-      "types": "mugs",
-      "qty": 1
-    },
-    {
-      "id": 51,
-      "title": "Bersache Sports Shoes",
-      "des": "This is a wider card with supporting text below as a natural lead-in to additional content. ",
-      "price": 349,
-      "img": "https://m.media-amazon.com/images/I/61P4Lp3i3nL._UY695_.jpg",
-      "types": "shoes",
-      "qty": 1
-    }
-  ],
+  "carts": [],
   "user": [
     {
-      "id": "c1a73f50-5fb1-4b81-97bd-52fd9421f598",
-      "fname": "Deanna",
-      "lname": "Hughes",
-      "email": "a@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "phone": "59",
-      "carts": [
-        {
-          "id": 51,
-          "title": "Bersache Sports Shoes",
-          "des": "This is a wider card with supporting text below as a natural lead-in to additional content. ",
-          "price": 349,
-          "img": "https://m.media-amazon.com/images/I/61P4Lp3i3nL._UY695_.jpg",
-          "types": "shoes",
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "id": "b4a6725b-34c7-4462-b29f-4473bf9e6a67",
-      "fname": "Sawyer",
-      "lname": "Bowen",
-      "email": "z@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "phone": "44",
+      "id": "aaab8fd5-66f1-4d53-a7b8-3c5813c0fa90",
+      "fname": "hitiksha",
+      "lname": "ghoghari",
+      "email": "Hitiksha@gmail.com",
+      "password": "Hitiksha11@123",
+      "phone": "1234567891",
       "carts": [
         {
           "id": 2,
@@ -704,51 +666,19 @@
           "price": 399,
           "img": "https://m.media-amazon.com/images/I/61oG1XGCqgL._UX569_.jpg",
           "types": "tshirt",
-          "qty": 2
-        }
-      ]
-    },
-    {
-      "id": "213f21d0-7ac7-402f-b03e-d838fef21cd4",
-      "fname": "Brittany",
-      "lname": "Mckenzie",
-      "email": "rekil@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "phone": "25",
-      "carts": []
-    },
-    {
-      "id": "aa7cae8b-8704-4b5b-a6ca-808c171f74a5",
-      "fname": "Jaquelyn",
-      "lname": "Lewis",
-      "email": "x@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "phone": "96",
-      "carts": [
+          "qty": 1
+        },
         {
-          "id": 14,
-          "title": "Coffee Mug",
+          "id": 53,
+          "title": "Men's Wonder",
           "des": "This is a wider card with supporting text below as a natural lead-in to additional content. ",
-          "price": 399,
-          "img": "https://m.media-amazon.com/images/I/81ekFNzJSLL._AC_UL320_.jpg",
-          "types": "mugs",
+          "price": 299,
+          "img": "https://m.media-amazon.com/images/I/61utX8kBDlL._UY695_.jpg",
+          "types": "shoes",
           "qty": 2
         }
       ]
     }
   ],
-  "login": [
-    {
-      "id": "23cf1ae7-038d-4e8f-8564-80718a7a00b5",
-      "email": "a@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "userId": "c1a73f50-5fb1-4b81-97bd-52fd9421f598"
-    },
-    {
-      "id": "b0aa7a50-26f7-4ceb-a722-bda5fa10b46f",
-      "email": "a@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "userId": "c1a73f50-5fb1-4b81-97bd-52fd9421f598"
-    }
-  ]
+  "login": []
 }

@@ -8,11 +8,6 @@ function account() {
     const user = useSelector(state => state.user.user);
     const router = useRouter();
 
-
-    // useEffect(() => {
-    //     dispatch(getuserApi())
-    // }, [])
-
     let value;
     if (typeof window !== "undefined") {
         value = JSON.parse(localStorage.getItem('login'))

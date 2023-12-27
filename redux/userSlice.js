@@ -10,19 +10,19 @@ export const userSlice = createSlice({
     },
     reducers: {
         getproduct: (state, action) => {
-            state.product = [...action.payload]
+            state.product = Array.isArray(action?.payload) ? [...action?.payload] : { ...action?.payload }
         },
         getcarts: (state, action) => {
-            state.carts = action.payload
+            state.carts = action?.payload
         },
         getuser: (state, action) => {
-            state.user = [...action.payload]
+            state.user = [...action?.payload]
         },
         getLoginUser: (state, action) => {
-            state.login = [...action.payload]
+            state.login = [...action?.payload]
         }
     },
 })
 // console.log(userSlice.actions)
 
-export const { getproduct, getcarts, getuser,getLoginUser } = userSlice.actions
+export const { getproduct, getcarts, getuser, getLoginUser } = userSlice.actions
