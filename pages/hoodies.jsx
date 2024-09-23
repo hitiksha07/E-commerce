@@ -5,27 +5,27 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 export const getServerSideProps = async (req, res) => {
-  let cachedData = await redis.get("productData");
-  if (cachedData) {
-    console.log("redis-hoddies")
-    return {
-      props: {
-        data: JSON.parse(cachedData),
-        val: "redis"
-      }
-    }
-  } else {
+  // let cachedData = await redis.get("productData");
+  // if (cachedData) {
+  //   console.log("redis-hoddies")
+  //   return {
+  //     props: {
+  //       data: JSON.parse(cachedData),
+  //       val: "redis"
+  //     }
+  //   }
+  // } else {
     console.log("database-hoddies")
     const respons = await fetch('http://localhost:3001/product');
     const data = await respons.json();
-    await redis.set("productData", JSON.stringify(data))
+    // await redis.set("productData", JSON.stringify(data))
     return {
       props: {
         data: [...data],
         val: "database"
       }
     }
-  }
+  // }
 }
 
 function hoodies({ data, val }) {
